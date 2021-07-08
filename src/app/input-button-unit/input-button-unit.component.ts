@@ -24,4 +24,8 @@ export class InputButtonUnitComponent implements OnInit {
     this.title = newTitle;
   }
 
+  getEvent(event: KeyboardEvent) {
+    this.title = (event.target  as HTMLInputElement).value;
+  }
+
 }
