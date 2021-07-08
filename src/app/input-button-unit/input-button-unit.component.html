@@ -1,5 +1,4 @@
-<p>input-button-unit works! {{ title }}</p>
-<input [value]="title" (keyup)="getEvent($event)">
-<button (click)="changeTitle('Button Clicked!')">
+<input class="todo-input" #input [value]="title" (keyup.enter)="submitValue(input.value)" placeholder="Add a todo">
+<button class="btn" (click)="submitValue(input.value)">
     Save
 </button>
