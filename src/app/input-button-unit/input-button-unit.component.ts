@@ -15,6 +15,9 @@ export class InputButtonUnitComponent implements OnInit {
   
   ngOnInit(): void { 
     this.title = 'Angular CLI Rules!';
+    setTimeout(() => {
+      this.title = 'This is not the title you are looking for';
+    }, 3000);
   }
 
   changeTitle(newTitle: string) {
