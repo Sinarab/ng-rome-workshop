@@ -1,3 +1,4 @@
+import { TodoListService } from './../services/todo-list.service';
 import { TodoItem } from './../interfaces/todo-item';
 import { Component } from '@angular/core';
 
@@ -8,24 +9,17 @@ import { Component } from '@angular/core';
 })
 export class ListManagerComponent {
 
-  todoList: TodoItem[] = [
-    {title: 'install NodeJS'},
-    {title: 'install Angular CLI'},
-    {title: 'create new app'},
-    {title: 'serve app'},
-    {title: 'develop app'},
-    {title: 'deploy app'},
-  ];
+  todoList: TodoItem[];
+
+  constructor(private todoListService: TodoListService) {
+    this.todoList = this.todoListService.getTodoList();
+  }
 
   addItem(title: string) {
-    this.todoList.push({ title: title });
+    this.todoListService.addTodo(title);
   }
 
   removeItem(titleToRemove: string) {
-    this.todoList.map((todo, i) => {
-      if (todo.title === titleToRemove) {
-        this.todoList.splice(i, 1);
-      }
-    })
+    this.todoListService.removeTodo(titleToRemove);
   }
 }
